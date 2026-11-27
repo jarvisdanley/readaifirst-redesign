@@ -91,6 +91,23 @@
     }
   });
 
+  /* ------------------------------------------------------------ pending-items toggle (mockup badge) */
+  const phBtn = document.querySelector("[data-ph-toggle]");
+  if (phBtn) {
+    const n = phBtn.dataset.n, root = document.documentElement;
+    const sync = () => {
+      const on = root.classList.contains("show-ph");
+      phBtn.setAttribute("aria-pressed", String(on));
+      phBtn.textContent = on ? "Hide pending items" : `Show ${n} pending item${n === "1" ? "" : "s"}`;
+    };
+    sync();
+    phBtn.addEventListener("click", () => {
+      root.classList.toggle("show-ph");
+      try { sessionStorage.setItem("ph", root.classList.contains("show-ph") ? "1" : "0"); } catch (e) {}
+      sync();
+    });
+  }
+
   /* ------------------------------------------------------------ filters */
   document.querySelectorAll("[data-filter-group]").forEach((group) => {
     const target = document.querySelector(group.dataset.filterGroup);
