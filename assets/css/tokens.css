@@ -1,0 +1,118 @@
+/* =====================================================================
+   AI-First web design system: tokens
+   Source of truth: resources-audit-2026-11/v2/template/brand.py (A4 Toolkit v2)
+   Print hexes are copied 1:1. Web-only values (button fills, on-dark text
+   accents) are derived for WCAG AA and noted beside each token.
+   ===================================================================== */
+
+/* Webfont: Nunito Sans (Google Fonts, OFL). Avenir Next is listed first and
+   is used wherever it is installed (every Mac and iPhone). Nunito Sans is the
+   closest free face to it: the same geometric skeleton with humanist
+   terminals, a true 600 weight for headings, and a large x-height that holds
+   up at 15px body sizes. Manrope was the runner-up, but it reads more
+   technical and narrower than Avenir. */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..800;1,6..12,400..600&display=swap");
+
+:root {
+  /* ---------- brand (brand.py, unchanged) ---------- */
+  --navy:    #0D132D;   /* Midnight Blue: headings, body ink, dark field */
+  --indigo:  #1a1a2e;   /* Deep Indigo: cover / hero field */
+  --orange:  #FF6B00;   /* Electric Orange: the single accent */
+  --cyan:    #00d4ff;
+  --violet:  #6B46C1;
+  --magenta: #E0267D;
+  --silver:  #C0C7D6;
+  --teal:    #0E7C7B;
+  --steel:   #4A6A94;
+  --ink:     #1F2437;   /* body text on light */
+  --muted:   #5A6175;   /* secondary text on light (6.2:1 on white) */
+  --rule:    #D7DBE5;   /* hairlines on light */
+  --tint:    #F4F5F9;   /* panel tint */
+  --white:   #FFFFFF;
+  --paper:   #FBFBFD;   /* light page field, a hair off pure white */
+
+  /* ---------- web-only derived colours (AA checked) ---------- */
+  --orange-fill:   #C9440F;  /* button fill, white text 4.86:1 (orange+white is 2.86:1, fails) */
+  --orange-fill-h: #B23A0B;  /* hover, white text 5.9:1 */
+  --orange-ink:    #C24F00;  /* orange text on white 4.76:1 */
+  --orange-on-dark:#FF8A57;  /* small orange text on indigo 7.3:1 */
+  --cyan-ink:      #007A99;  /* cyan text on white 4.95:1 */
+  --violet-on-dark:#B5A4F0;  /* 7.7:1 on indigo */
+  --magenta-fill:  #B81D66;  /* chip fill, white text 6.2:1 (magenta+white is 4.43:1) */
+  --magenta-on-dark:#FF4F98; /* 5.5:1 on indigo */
+  --teal-on-dark:  #2BB5B3;
+  --steel-on-dark: #7E9CC6;
+  --text-on-dark:  #FFFFFF;
+  --text-on-dark-2:#D9DEEA;  /* secondary on indigo 12.7:1 (cover-sub value) */
+  --text-on-dark-3:#AEB6CA;  /* tertiary on indigo, captions only */
+  --rule-on-dark:  rgba(255,255,255,.16);
+  --lattice-line:  #8FA3D6;  /* exhibits.lattice_motif edge colour */
+
+  /* ---------- stage accents (brand.py PHASES) ----------
+     fill = segment / chip colour, on = text on the fill, ink = text on white,
+     dark = text on the dark field, tint = light panel */
+  --assess-fill: var(--cyan);    --assess-on: var(--navy);   --assess-ink: #007A99; --assess-dark: var(--cyan);            --assess-tint: #E5FAFF;
+  --architect-fill: var(--violet); --architect-on: #fff;     --architect-ink: #6B46C1; --architect-dark: var(--violet-on-dark); --architect-tint: #F0EBFA;
+  --activate-fill: var(--orange); --activate-on: var(--navy); --activate-ink: #C24F00; --activate-dark: var(--orange-on-dark); --activate-tint: #FFF1E6;
+  --amplify-fill: var(--magenta-fill); --amplify-on: #fff;   --amplify-ink: #B81D66; --amplify-dark: var(--magenta-on-dark); --amplify-tint: #FCE9F2;
+  --lead-fill: var(--silver);    --lead-on: var(--navy);     --lead-ink: #4B556B;   --lead-dark: var(--silver);            --lead-tint: #EEF0F5;
+  --resilience-fill: var(--teal); --resilience-on: #fff;     --resilience-ink: #0B6463; --resilience-dark: var(--teal-on-dark); --resilience-tint: #E3F2F1;
+  --evolution-fill: var(--steel); --evolution-on: #fff;      --evolution-ink: #3B5679; --evolution-dark: var(--steel-on-dark); --evolution-tint: #EAF0F7;
+  /* Note: print chips put white on orange; the web chip uses navy on orange (6.4:1). */
+
+  /* ---------- typography ---------- */
+  --font-sans: "Avenir Next", "Nunito Sans", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-num: var(--font-sans);           /* tabular-nums via font-variant-numeric */
+  --fw-regular: 400; --fw-medium: 500;
+  --fw-heading: 600;  /* 600 is reserved for h1-h3, as in print */
+  --fw-bold: 700;
+
+  /* fluid scale, 390px to 1440px viewports (ratio ~1.25 mobile, ~1.333 desktop) */
+  --fs-xs:   0.8125rem;                                   /* 13px  labels, chips */
+  --fs-sm:   0.9375rem;                                   /* 15px  captions, meta */
+  --fs-base: 1.0625rem;                                   /* 17px  body */
+  --fs-lg:   clamp(1.125rem, 1.06rem + 0.29vw, 1.3125rem);/* 18-21 lead paragraph */
+  --fs-h4:   clamp(1.1875rem, 1.12rem + 0.3vw, 1.375rem); /* 19-22 card titles */
+  --fs-h3:   clamp(1.375rem, 1.24rem + 0.57vw, 1.75rem);  /* 22-28 */
+  --fs-h2:   clamp(1.75rem, 1.47rem + 1.14vw, 2.5rem);    /* 28-40 */
+  --fs-h1:   clamp(2.25rem, 1.71rem + 2.29vw, 3.75rem);   /* 36-60 */
+  --fs-display: clamp(2.5rem, 1.95rem + 2.3vw, 4rem); /* 40-64 hero, 2 lines at 1440 */
+  --fs-stat: clamp(4rem, 2.9rem + 4.6vw, 7rem);           /* pull-stat numeral */
+  --lh-tight: 1.04; --lh-heading: 1.15; --lh-body: 1.6;
+  --ls-display: -0.022em; --ls-heading: -0.012em;
+  --ls-label: 0.14em;  /* uppercase labels (print: 1.6pt on 8.5pt) */
+  --measure: 66ch;
+
+  /* ---------- space (4px base) ---------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+  --sp-6: 24px; --sp-7: 32px; --sp-8: 40px; --sp-9: 48px; --sp-10: 64px;
+  --sp-11: 80px; --sp-12: 96px; --sp-13: 128px;
+  --section-y: clamp(64px, 40px + 5vw, 128px);
+  --gutter: clamp(20px, 12px + 2.4vw, 48px);
+  --container: 1240px;
+
+  /* ---------- radii (one documented rule) ----------
+     interactive pills (buttons, chips, tool numbers) = full pill, as on the covers;
+     cards and panels = 10px; inputs = 8px; images = 6px */
+  --r-pill: 999px; --r-card: 10px; --r-input: 8px; --r-img: 6px; --r-bar: 3px;
+
+  /* ---------- shadows (tinted navy, offset + blur, never black halos) ---------- */
+  --sh-1: 0 1px 2px rgba(13,19,45,.06), 0 1px 1px rgba(13,19,45,.04);
+  --sh-2: 0 6px 16px -4px rgba(13,19,45,.12), 0 2px 4px rgba(13,19,45,.05);
+  --sh-3: 0 18px 40px -12px rgba(13,19,45,.24), 0 4px 10px rgba(13,19,45,.06);
+  --sh-cover: 0 24px 48px -16px rgba(0,0,0,.55), 0 6px 14px rgba(0,0,0,.25);
+  --focus-ring: 0 0 0 3px var(--paper), 0 0 0 5px var(--cyan-ink);
+  --focus-ring-dark: 0 0 0 3px var(--indigo), 0 0 0 5px var(--cyan);
+
+  /* ---------- motion ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);   /* exponential ease-out */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 120ms; --dur-2: 220ms; --dur-3: 420ms; --dur-4: 900ms;
+
+  /* ---------- layers ---------- */
+  --z-base: 0; --z-raised: 10; --z-header: 100; --z-menu: 110;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: 0ms; --dur-2: 0ms; --dur-3: 0ms; --dur-4: 0ms; }
+}
