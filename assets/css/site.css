@@ -772,3 +772,43 @@ h2, .sec-head h2 { letter-spacing: -0.02em; }
 .tool-card .sep { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .tool-card .meta .free { flex-basis: auto; }
 .tool-card .meta .free::before { content: ""; display: inline-block; width: 1px; height: 11px; background: var(--rule); margin-right: 12px; vertical-align: -1px; }
+
+/* ---------- round 4: concrete defect fixes (Neo, 1440x900 viewport pass) */
+/* 1. home/resources hero: covers read as whole objects (edge outline, less dimming) and fan out so titles peek past the book */
+.artifacts .tc { width: 44%; filter: brightness(.88) saturate(.9); border-radius: 6px; outline: 1px solid rgba(255,255,255,.16); outline-offset: -1px; }
+.artifacts .book { width: 50%; margin-left: -25%; }
+@media (min-width: 961px) {
+  .artifacts .tc-1 { left: -4%; top: 84px; transform: rotate(-6deg); }
+  .artifacts .tc-2 { right: -4%; top: 48px; transform: rotate(5deg); }
+}
+@media (min-width: 1300px) {
+  .artifacts .tc-2 { right: -17%; }
+  .artifacts .book { margin-left: -29%; }
+}
+/* 2. header: tagline lives in the footer only; the header carries the mark + wordmark */
+.site-header .brand-word span.tagline { display: none; }
+.site-header .brand-word b { line-height: 1; font-size: 20px; }
+/* 3. header: logo block, nav items and CTA on one centre line */
+.site-header .bar { align-items: center; }
+.site-header .brand, .site-header .site-nav, .site-header .cta { align-self: center; }
+.site-header .brand { height: 40px; }
+.site-header .cta { height: 40px; display: inline-flex; align-items: center; }
+/* 4. section heads: eyebrow above the heading, heading flush with the content column */
+.sec-head { grid-template-columns: minmax(0, 1fr); gap: var(--sp-3); }
+.sec-head .label, .sec-head > :not(.label) { grid-column: 1; }
+/* 5. split sections: the narrow right column travels with the reader instead of leaving a dead zone */
+@media (min-width: 901px) {
+  .split.wide-left > :last-child { position: sticky; top: 112px; align-self: start; }
+}
+/* 6. takeaway rules span their column exactly */
+.split > .prose { max-width: none; }
+.takeaways { width: 100%; }
+.takeaways li { width: 100%; box-sizing: border-box; }
+/* 7. anchors clear the sticky header (and the resources filter bar) */
+html { scroll-padding-top: 0; }
+[id], section { scroll-margin-top: 96px; }
+html:has(.filter-bar) [id], html:has(.filter-bar) section { scroll-margin-top: 160px; }
+/* 5b. Assess "what it decides": takeaways run full width in three columns, the pull quote closes the section full width */
+.decides .lead-sent { max-width: 48ch; }
+.pullquote--wide { margin-top: var(--sp-10); padding: var(--sp-6) 0 var(--sp-6) var(--sp-7); max-width: none; }
+.pullquote--wide p { font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); max-width: 34ch; }
