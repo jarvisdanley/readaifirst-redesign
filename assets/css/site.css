@@ -812,3 +812,7 @@ html:has(.filter-bar) [id], html:has(.filter-bar) section { scroll-margin-top: 1
 .decides .lead-sent { max-width: 48ch; }
 .pullquote--wide { margin-top: var(--sp-10); padding: var(--sp-6) 0 var(--sp-6) var(--sp-7); max-width: none; }
 .pullquote--wide p { font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); max-width: 34ch; }
+
+.ideas .idea .idea-list { margin: var(--sp-4) 0 0; padding: 0; list-style: none; counter-reset: il; display: grid; gap: 6px; }
+.ideas .idea .idea-list li { counter-increment: il; display: flex; gap: 10px; align-items: baseline; font-size: 16px; font-weight: 600; color: var(--navy); line-height: 1.35; }
+.ideas .idea .idea-list li::before { content: counter(il); flex: 0 0 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; background: var(--navy); transform: translateY(-1px); }
